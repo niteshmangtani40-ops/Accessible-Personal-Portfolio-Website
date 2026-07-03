@@ -1,0 +1,397 @@
+/* =========================================================
+   ACCESSIBLE PERSONAL PORTFOLIO — Animations
+   Description: Keyframes, scroll-reveal, entrance effects
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. KEYFRAME ANIMATIONS
+   --------------------------------------------------------- */
+
+/* Fade Up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade Down */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Left */
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade Right */
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37,99,235,0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(37,99,235,0);
+  }
+}
+
+/* Floating */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Shimmer (for progress bars) */
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+/* Progress bar fill */
+@keyframes fillBar {
+  from { width: 0%; }
+}
+
+/* Ripple */
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Bounce */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Wave underline */
+@keyframes waveUnderline {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---------------------------------------------------------
+   2. SCROLL REVEAL — Base States
+   Elements with [data-reveal] start hidden.
+   JS adds .revealed class when they enter the viewport.
+   --------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal="up"] {
+  transform: translateY(40px);
+}
+
+[data-reveal="down"] {
+  transform: translateY(-40px);
+}
+
+[data-reveal="left"] {
+  transform: translateX(-40px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(40px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.85);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered delays for grid children */
+[data-reveal-delay="1"] { transition-delay: 0.1s; }
+[data-reveal-delay="2"] { transition-delay: 0.2s; }
+[data-reveal-delay="3"] { transition-delay: 0.3s; }
+[data-reveal-delay="4"] { transition-delay: 0.4s; }
+[data-reveal-delay="5"] { transition-delay: 0.5s; }
+[data-reveal-delay="6"] { transition-delay: 0.6s; }
+
+/* ---------------------------------------------------------
+   3. HERO ENTRANCE ANIMATIONS
+   --------------------------------------------------------- */
+.animate-fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease both;
+}
+
+.animate-fade-right {
+  animation: fadeRight 0.8s ease both;
+}
+
+.animate-fade-left {
+  animation: fadeLeft 0.8s ease both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease both;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* ---------------------------------------------------------
+   4. FLOATING PROFILE IMAGE
+   --------------------------------------------------------- */
+.profile-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------
+   5. TYPING CURSOR
+   --------------------------------------------------------- */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--color-primary);
+  margin-left: 2px;
+  vertical-align: middle;
+  border-radius: 2px;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* ---------------------------------------------------------
+   6. PROGRESS BAR ANIMATIONS
+   --------------------------------------------------------- */
+.skill-bar-fill {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 50%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+  height: 100%;
+  border-radius: inherit;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-bar-fill.filled {
+  /* Width set by JS via data-width attribute */
+}
+
+/* ---------------------------------------------------------
+   7. PULSE / GLOW EFFECTS
+   --------------------------------------------------------- */
+.pulse-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: pulseGlow 2s infinite;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   8. HOVER MICRO-ANIMATIONS
+   --------------------------------------------------------- */
+
+/* Card lift */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Icon bounce on hover */
+.hover-bounce:hover .icon {
+  animation: bounce 0.5s ease;
+}
+
+/* Scale icon on hover */
+.icon-hover-scale {
+  transition: transform var(--transition-spring);
+}
+.icon-hover-scale:hover {
+  transform: scale(1.15);
+}
+
+/* ---------------------------------------------------------
+   9. GRADIENT BORDER
+   --------------------------------------------------------- */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  z-index: -1;
+}
+
+/* ---------------------------------------------------------
+   10. SPINNER (Loading)
+   --------------------------------------------------------- */
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   11. PAGE TRANSITION OVERLAY
+   --------------------------------------------------------- */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--color-primary);
+  z-index: calc(var(--z-top) + 1);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   12. PARTICLE DOTS (decorative background)
+   --------------------------------------------------------- */
+.particle-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle-bg::before,
+.particle-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.particle-bg::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle-bg::after {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+  bottom: -80px;
+  left: -80px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* ---------------------------------------------------------
+   13. TIMELINE ANIMATIONS
+   --------------------------------------------------------- */
+.timeline-item {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------------------------------------------------------
+   14. COUNTER ANIMATION
+   --------------------------------------------------------- */
+.count-up {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
